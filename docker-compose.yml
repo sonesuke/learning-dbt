@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  dbt:
+    build:
+      context: ./
+    environment:
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: "dbt"
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./dbt:/app
+      - ./dbt/profile:/root/.dbt/
+    working_dir: /app
